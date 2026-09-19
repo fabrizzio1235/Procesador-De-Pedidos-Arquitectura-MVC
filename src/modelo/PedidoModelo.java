@@ -2,12 +2,21 @@ package modelo;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-/*(REUTILIZADO)*/
+/*
+    MODELO.
+    Reutilización de la versión en capas.
+    Diferencia con capas, en MVC el Modelo agrupa dos cosas:
+    - Mantiene el estado (los pedidos registrados)
+    - Ejecuta las reglas del negocio
+    No imprime nada ni pide datos al usuario, cuando algo no es válido
+    lanza una excepción, el Controlador la atrapa y se la pasa a la Vista.
+ */
 
-//    Agrupa tanto las reglas de negocio como el almacenamiento en memoria
 public class PedidoModelo {
 
     private static final BigDecimal INICIO_DESCUENTO = new BigDecimal("1000");
@@ -44,6 +53,11 @@ public class PedidoModelo {
 
     public Pedido consultarPedido(int id) {
         return pedidos.get(id);
+    }
+
+    // Se devuelve una copia de la lista
+    public List<Pedido> listarPedidos() {
+        return new  ArrayList<>(pedidos.values());
     }
 
 
