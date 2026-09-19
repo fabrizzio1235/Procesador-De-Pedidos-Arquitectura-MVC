@@ -4,12 +4,12 @@ import modelo.Pedido;
 import modelo.PedidoModelo;
 import vista.PedidoVista;
 
-/*TODO
-* El Controlador coordinará la interacción:
-*
-*
-*El Controlador no deberá contener las reglas de cálculo del pedido.
-* */
+/*
+    CONTROLADOR.
+    Interpreta la acción que pide el usuario y coordina la Vista y el Modelo.
+    El Controlador no calcula descuentos ni impuestos ni valida reglas de negocio.
+ */
+
 public class PedidoControlador {
 
     private PedidoModelo modelo;
@@ -28,6 +28,8 @@ public class PedidoControlador {
             vista.mostrarResultado(resultado);
 
         } catch (IllegalArgumentException e) {
+            // El Modelo rechazó el pedido (ya sea por cliente vacío, sin productos, etc.).
+            // El Controlador no lo muestra, se lo pasa a la Vista.
             vista.mostrarError(e.getMessage());
         }
     }
