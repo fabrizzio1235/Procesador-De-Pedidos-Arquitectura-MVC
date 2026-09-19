@@ -24,6 +24,11 @@ public class PedidoControlador {
 
         try {
             Pedido pedido = vista.capturarPedido();
+            // La vista devuelve null si el usuario regresó o eligió una opción inválida
+            // no hay pedido que mandar al Modelo
+            if (pedido == null){
+                return;
+            }
             Pedido resultado = modelo.registrarPedido(pedido);
             vista.mostrarResultado(resultado);
 
