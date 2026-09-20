@@ -26,7 +26,7 @@ public class PedidoModelo {
     private Map<Integer, Pedido> pedidos = new HashMap<>();
     private int siguienteId = 1;
 
-    //Válida, calcula, guarda, y devuelve el pedido
+    //Valida, calcula, guarda, y devuelve el pedido
     public Pedido registrarPedido(Pedido pedido) {
         validar(pedido);
 

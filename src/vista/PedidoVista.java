@@ -13,7 +13,7 @@ import java.util.Scanner;
     VISTA.
     Presenta información, captura acciones y muestra mensajes.
     No calcula descuentos ni impuestos, no almacena pedidos ni aplica reglas de negocio.
-    Válida el formato que mete el usuario.
+    Valida el formato que mete el usuario.
  */
 
 public class PedidoVista {
@@ -160,7 +160,7 @@ public class PedidoVista {
         System.out.println("Error: " + mensaje);
     }
 
-    // Muestra el menú principal. El controlador decide que hacer con la opción elegida.
+    // Muestra el menú principal. El controlador decide qué hacer con la opción elegida.
     public void mostrarMenu() {
         System.out.println();
         System.out.println("---Sistema de Pedidos---");
