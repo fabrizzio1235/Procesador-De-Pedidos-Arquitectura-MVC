@@ -14,22 +14,17 @@ public class Principal {
         PedidoModelo modelo = new PedidoModelo();
 
         // Con vista normal
+        System.out.println("Vista Normal");
         PedidoVista vista = new PedidoVista();
         PedidoControlador controlador = new PedidoControlador(modelo, vista);
-        controlador.registrarPedido();
+        controlador.iniciar();
 
         // Con vista reusmida, mismo modelo
+        System.out.println();
+        System.out.println("Vista Resumida");
         PedidoVistaResumida vistaResumida = new PedidoVistaResumida();
         PedidoControlador controladorResumido = new PedidoControlador(modelo, vistaResumida);
-        controladorResumido.registrarPedido();
+        controladorResumido.iniciar();
 
-        //Prueba temporal para la tercera parte
-        System.out.println();
-        System.out.println("---Consultar el pedido 1 con la Vista normal---");
-        controlador.consultarPedido(1);
-        System.out.println("---Consultar el pedido 1 con la Vista resumida---");
-        controladorResumido.consultarPedido(1);
-        System.out.println("---Consultar un pedido que no existe---");
-        controlador.consultarPedido(7);
     }
 }

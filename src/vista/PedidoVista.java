@@ -160,6 +160,44 @@ public class PedidoVista {
         System.out.println("Error:" + mensaje);
     }
 
+    // Muestra el menú principal. El controlador decide qúe hacer con la opción elegida.
+    public void mostrarMenu() {
+        System.out.println();
+        System.out.println("---Sistema de Pedidos---");
+        System.out.println("1. Registrar pedido");
+        System.out.println("2. Consultar pedido por Id");
+        System.out.println("3. Listar pedidos");
+        System.out.println("4. Salir");
+        System.out.println("Seleccione una opcion: ");
+    }
+
+    public String leerOpcion() {
+        return scanner.nextLine().trim();
+    }
+
+    public int capturarId() {
+        return leerEntero("ID del pedido: ");
+    }
+
+    public void mostrarListaPedidos(List<Pedido> pedidos) {
+        System.out.println();
+        System.out.println("---Lista de pedidos---");
+
+        if (pedidos.isEmpty()) {
+            System.out.println("No existen pedidos");
+            return;
+        }
+
+        for  (Pedido pedido : pedidos) {
+            mostrarPedido(pedido);
+            System.out.println();
+        }
+    }
+
+    public void mostrarMensaje(String mensaje) {
+        System.out.println(mensaje);
+    }
+
     //Da formato a la salida de dinero
     protected String dinero(BigDecimal valor) {
         return "$" + valor.setScale(2, RoundingMode.HALF_UP);

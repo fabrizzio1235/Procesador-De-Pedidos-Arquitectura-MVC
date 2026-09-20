@@ -50,4 +50,32 @@ public class PedidoControlador {
             vista.mostrarResultado(pedido);
         }
     }
+
+    // Ciclo principal del sistema. La vista hace el menú y lee la opción,
+    // el controlador interpreta esa opción y llama a la operación correcta.
+    public void iniciar() {
+        String opcion;
+
+        do{
+            vista.mostrarMenu();
+            opcion = vista.leerOpcion();
+
+            switch (opcion) {
+                case "1" : registrarPedido();
+                break;
+                case "2" : consultarPedido(vista.capturarId());
+                break;
+                case "3" : listarPedidos();
+                break;
+                case "4" : vista.mostrarMensaje("Saliendo...");
+                break;
+                default: vista.mostrarError("Opción no válida");
+            }
+        } while (!opcion.equals("4"));
+    }
+
+    //Pide la lista al Modelo y se la entrega a la Vista para que la muestre
+    public void listarPedidos(){
+        vista.mostrarListaPedidos(modelo.listarPedidos());
+    }
 }
