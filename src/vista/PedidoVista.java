@@ -13,7 +13,7 @@ import java.util.Scanner;
     VISTA.
     Presenta información, captura acciones y muestra mensajes.
     No calcula descuentos ni impuestos, no almacena pedidos ni aplica reglas de negocio.
-    Válida el formato de que mete el usario.
+    Válida el formato que mete el usuario.
  */
 
 public class PedidoVista {
@@ -41,7 +41,7 @@ public class PedidoVista {
 
     // Reutilización de capas
     private Pedido capturarPedidoNuevo() {
-        System.out.print("Nombre del cliente: ");
+        System.out.println("Nombre del cliente: ");
         String cliente = scanner.nextLine();
 
         List<Producto> productos = new ArrayList<>();
@@ -50,7 +50,7 @@ public class PedidoVista {
         do {
             System.out.println("1. Agregar producto");
             System.out.println("2. Confirmar pedido");
-            System.out.print("Seleccione una opción: ");
+            System.out.println("Seleccione una opción: ");
             opcion = scanner.nextLine().trim();
 
             if (opcion.equals("1")) {
@@ -66,7 +66,7 @@ public class PedidoVista {
     }
 
     private Producto capturarProducto() {
-        System.out.print("Nombre del producto: ");
+        System.out.println("Nombre del producto: ");
         String nombre = scanner.nextLine();
         BigDecimal precio = leerPrecio("Precio: ");
         int cantidad = leerEntero("Cantidad solicitada: ");
@@ -83,7 +83,7 @@ public class PedidoVista {
         System.out.println("3. Pedido en límite del descuento");
         System.out.println("4. Pedido con cantidad mayor a la existencia");
         System.out.println("5. Pedido sin productos (inválido)");
-        System.out.print("Seleccione una opción: ");
+        System.out.println("Seleccione una opción: ");
         String opcion = scanner.nextLine().trim();
 
         switch (opcion) {
@@ -113,7 +113,7 @@ public class PedidoVista {
     // Se repite la pregunta hasta que el usuario teclee un entero.
     private int leerEntero(String mensaje) {
         while (true) {
-            System.out.print(mensaje);
+            System.out.println(mensaje);
             try {
                 return Integer.parseInt(scanner.nextLine().trim());
             } catch (NumberFormatException e) {
@@ -125,7 +125,7 @@ public class PedidoVista {
     // Lo mismo que leerEntero pero para precios
     private BigDecimal leerPrecio(String mensaje) {
         while (true) {
-            System.out.print(mensaje);
+            System.out.println(mensaje);
             try {
                 return new BigDecimal(scanner.nextLine().trim());
             } catch (NumberFormatException e) {
@@ -157,10 +157,10 @@ public class PedidoVista {
 
     // Se usa cuando el Modelo rechaza un pedido (llega desde el controlador)
     public void mostrarError(String mensaje) {
-        System.out.println("Error:" + mensaje);
+        System.out.println("Error: " + mensaje);
     }
 
-    // Muestra el menú principal. El controlador decide qúe hacer con la opción elegida.
+    // Muestra el menú principal. El controlador decide que hacer con la opción elegida.
     public void mostrarMenu() {
         System.out.println();
         System.out.println("---Sistema de Pedidos---");
@@ -168,7 +168,7 @@ public class PedidoVista {
         System.out.println("2. Consultar pedido por Id");
         System.out.println("3. Listar pedidos");
         System.out.println("4. Salir");
-        System.out.println("Seleccione una opcion: ");
+        System.out.println("Seleccione una opción: ");
     }
 
     public String leerOpcion() {

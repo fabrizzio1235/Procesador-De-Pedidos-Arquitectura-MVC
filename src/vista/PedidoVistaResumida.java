@@ -11,10 +11,12 @@ public class PedidoVistaResumida extends PedidoVista{
 
     // Al registrar solo se muestra el resumen. No se usa la misma de la clase padre
     // porque agrega el mensaje, se usa uno nuevo porque pide solo mostrar las 3 líneas
+    @Override
     public void mostrarResultado(Pedido pedido){
         mostrarPedido(pedido);
     }
 
+    @Override
     public void mostrarPedido(Pedido pedido){
         System.out.println("Pedido: "+ pedido.getId());
         System.out.println("Total: " + dinero(pedido.getTotal())); // Viene de la clase padre

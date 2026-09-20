@@ -19,7 +19,6 @@ public class Pedido {
     private BigDecimal total;
     private String estado;
 
-    // El id se asigna después, cuando el repositorio guarda el pedido.
     public Pedido (String cliente, List<Producto> productos) {
         this.cliente = cliente;
         this.productos = productos;

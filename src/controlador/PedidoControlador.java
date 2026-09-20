@@ -47,7 +47,7 @@ public class PedidoControlador {
         if (pedido == null){
             vista.mostrarError("Pedido no encontrado");
         } else {
-            vista.mostrarResultado(pedido);
+            vista.mostrarPedido(pedido);
         }
     }
 

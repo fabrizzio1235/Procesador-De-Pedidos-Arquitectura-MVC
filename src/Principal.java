@@ -19,8 +19,9 @@ public class Principal {
         PedidoControlador controlador = new PedidoControlador(modelo, vista);
         controlador.iniciar();
 
-        // Con vista reusmida, mismo modelo
+        // Con vista resumida, mismo modelo
         System.out.println();
+        System.out.println("Abriendo con Vista Resumida");
         System.out.println("Vista Resumida");
         PedidoVistaResumida vistaResumida = new PedidoVistaResumida();
         PedidoControlador controladorResumido = new PedidoControlador(modelo, vistaResumida);
