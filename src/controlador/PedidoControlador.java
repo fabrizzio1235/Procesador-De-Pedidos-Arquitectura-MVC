@@ -38,4 +38,16 @@ public class PedidoControlador {
             vista.mostrarError(e.getMessage());
         }
     }
+
+    // Tercera Parte
+    public void consultarPedido (int id){
+        Pedido pedido = modelo.consultarPedido(id);
+
+        //El Modelo devuelve null cuando el id no existe
+        if (pedido == null){
+            vista.mostrarError("Pedido no encontrado");
+        } else {
+            vista.mostrarResultado(pedido);
+        }
+    }
 }
