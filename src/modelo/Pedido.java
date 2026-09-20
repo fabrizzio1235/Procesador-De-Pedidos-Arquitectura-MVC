@@ -88,11 +88,4 @@ public class Pedido {
         this.estado = estado;
     }
 
-    @Override
-    public String toString() {
-        return String.format(
-                "Pedido #%d de '%s': { Estado: '%s' | Subtotal: $%.2f | Descuento: $%.2f | Impuestos: $%.2f | Total: $%.2f }",
-                id, cliente, estado, subtotal, descuento, impuestos, total
-        );
-    }
 }
