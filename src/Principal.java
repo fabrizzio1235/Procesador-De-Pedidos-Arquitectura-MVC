@@ -16,6 +16,7 @@ public class Principal {
         // Con vista normal
         System.out.println("Vista Normal");
         PedidoVista vista = new PedidoVista();
+        modelo.agregarObserver(vista);
         PedidoControlador controlador = new PedidoControlador(modelo, vista);
         controlador.iniciar();
 
@@ -24,6 +25,9 @@ public class Principal {
         System.out.println("Abriendo con Vista Resumida");
         System.out.println("Vista Resumida");
         PedidoVistaResumida vistaResumida = new PedidoVistaResumida();
+        modelo.agregarObserver(vistaResumida);
+        //Para que solo se vea el resultado en la vista resumida
+        modelo.eliminarObserver(vista);
         PedidoControlador controladorResumido = new PedidoControlador(modelo, vistaResumida);
         controladorResumido.iniciar();
 

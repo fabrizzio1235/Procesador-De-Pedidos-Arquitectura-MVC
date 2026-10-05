@@ -1,6 +1,7 @@
 package vista;
 
 import modelo.Pedido;
+import modelo.PedidoObserver;
 import modelo.Producto;
 
 import java.math.BigDecimal;
@@ -16,7 +17,13 @@ import java.util.Scanner;
     Valida el formato que mete el usuario.
  */
 
-public class PedidoVista {
+public class PedidoVista  implements PedidoObserver {
+
+    @Override
+    public void pedidoRegistrado(Pedido pedido) {
+        mostrarResultado(pedido);
+    }
+
     private static final Scanner scanner = new Scanner(System.in);
 
     // Devuelve el pedido capturado, o null si el usuario regresa.
@@ -30,13 +37,15 @@ public class PedidoVista {
         System.out.println("Seleccione una opción: ");
         String opcion = scanner.nextLine().trim();
 
-        switch (opcion) {
-            case "1": return capturarPedidoNuevo();
-            case "2": return capturarPedidoDePrueba();
-            case "3": return null;
-            default: mostrarError("Opción no válida");
-                return null;
-        }
+        return switch (opcion) {
+            case "1" -> capturarPedidoNuevo();
+            case "2" -> capturarPedidoDePrueba();
+            case "3" -> null;
+            default -> {
+                mostrarError("Opción no válida");
+                yield null;
+            }
+        };
     }
 
     // Reutilización de capas
@@ -86,27 +95,23 @@ public class PedidoVista {
         System.out.println("Seleccione una opción: ");
         String opcion = scanner.nextLine().trim();
 
-        switch (opcion) {
-            case "1":
-                return new Pedido("Francois", new ArrayList<>(List.of(
-                        new Producto("Monitor", new BigDecimal("1250"), 3, 8))));
-            case "2":
-                return new Pedido("Diego", new ArrayList<>(List.of(
-                        new Producto("Cuchara", new BigDecimal("22"), 1, 22),
-                        new Producto("Servilletas", new BigDecimal("38"), 2, 51))));
-            case "3":
-                return new Pedido("Fabrizzio", new ArrayList<>(List.of(
-                        new Producto("Teclado", new BigDecimal("500"), 1, 5),
-                        new Producto("Mouse", new BigDecimal("250"), 2, 10))));
-            case "4":
-                return new Pedido("Pedro", new ArrayList<>(List.of(
-                        new Producto("Teclado", new BigDecimal("500"), 5, 3))));
-            case "5":
-                return new Pedido("Edwin", new ArrayList<>());
-            default:
+        return switch (opcion) {
+            case "1" -> new Pedido("Francois", new ArrayList<>(List.of(
+                    new Producto("Monitor", new BigDecimal("1250"), 3, 8))));
+            case "2" -> new Pedido("Diego", new ArrayList<>(List.of(
+                    new Producto("Cuchara", new BigDecimal("22"), 1, 22),
+                    new Producto("Servilletas", new BigDecimal("38"), 2, 51))));
+            case "3" -> new Pedido("Fabrizzio", new ArrayList<>(List.of(
+                    new Producto("Teclado", new BigDecimal("500"), 1, 5),
+                    new Producto("Mouse", new BigDecimal("250"), 2, 10))));
+            case "4" -> new Pedido("Pedro", new ArrayList<>(List.of(
+                    new Producto("Teclado", new BigDecimal("500"), 5, 3))));
+            case "5" -> new Pedido("Edwin", new ArrayList<>());
+            default -> {
                 mostrarError("Opción no válida");
-                return null;
-        }
+                yield null;
+            }
+        };
     }
 
     // Reutilización de capas que usaba Integer.parseInt.
@@ -202,4 +207,6 @@ public class PedidoVista {
     protected String dinero(BigDecimal valor) {
         return "$" + valor.setScale(2, RoundingMode.HALF_UP);
     }
+
+
 }

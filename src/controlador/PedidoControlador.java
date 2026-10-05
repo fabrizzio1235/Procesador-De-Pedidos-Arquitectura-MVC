@@ -29,8 +29,7 @@ public class PedidoControlador {
             if (pedido == null){
                 return;
             }
-            Pedido resultado = modelo.registrarPedido(pedido);
-            vista.mostrarResultado(resultado);
+            modelo.registrarPedido(pedido);
 
         } catch (IllegalArgumentException e) {
             // El Modelo rechazó el pedido (ya sea por cliente vacío, sin productos, etc.).
