@@ -22,24 +22,23 @@ public class PedidoModelo {
     private static final BigDecimal INICIO_DESCUENTO = new BigDecimal("1000");
     private static final BigDecimal PORCENTAJE_DESCUENTO = new BigDecimal("0.10");
     private static final BigDecimal IVA = new BigDecimal("0.16");
-    private final List<PedidoObserver> observers = new ArrayList<>();
+    private final List<PedidoObservador> observers = new ArrayList<>();
     private Map<Integer, Pedido> pedidos = new HashMap<>();
     private int siguienteId = 1;
 
     //Operaciones para añadir, eliminar y notificar a observadores (En este caso, la vista)
-    public void agregarObserver (PedidoObserver observer){
+    public void agregarObserver (PedidoObservador observer){
         observers.add(observer);
     }
-    public void eliminarObserver (PedidoObserver observer){
+    public void eliminarObserver (PedidoObservador observer){
         observers.remove(observer);
     }
 
     public void notificarPedidoRegistrado (Pedido pedido){
-        for (PedidoObserver o:observers){
+        for (PedidoObservador o:observers){
             o.pedidoRegistrado(pedido);
         }
     }
-
 
     //Valida, calcula, guarda, y devuelve el pedido
     public Pedido registrarPedido(Pedido pedido) {

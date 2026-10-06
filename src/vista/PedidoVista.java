@@ -1,7 +1,7 @@
 package vista;
 
 import modelo.Pedido;
-import modelo.PedidoObserver;
+import modelo.PedidoObservador;
 import modelo.Producto;
 
 import java.math.BigDecimal;
@@ -17,7 +17,7 @@ import java.util.Scanner;
     Valida el formato que mete el usuario.
  */
 
-public class PedidoVista  implements PedidoObserver {
+public class PedidoVista  implements PedidoObservador {
 
     @Override
     public void pedidoRegistrado(Pedido pedido) {

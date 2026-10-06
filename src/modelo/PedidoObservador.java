@@ -1,5 +1,5 @@
 package modelo;
 
-public interface PedidoObserver {
+public interface PedidoObservador {
     void pedidoRegistrado(Pedido pedido);
 }
