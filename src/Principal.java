@@ -28,7 +28,6 @@ public class Principal {
         System.out.println("Abriendo con Vista Resumida");
         System.out.println("Vista Resumida");
 
-        //Para que solo se vea el resultado en la vista resumida
         PedidoControlador controladorResumido = new PedidoControlador(modelo, vistaResumida);
         controladorResumido.iniciar();
 
